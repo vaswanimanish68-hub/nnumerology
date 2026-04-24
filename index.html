@@ -1,0 +1,2743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstroVision | Premium Astrology Guidance</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-gold: #FFD700;
+            --soft-purple: #6c5ce7;
+            --deep-blue: #0984e3;
+            --wa-green: #25D366;
+            --glass: rgba(255, 255, 255, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            overflow-x: hidden;
+            color: #2d3436;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, #ffffff 0%, #e0e7ff 100%);
+            z-index: -1;
+        }
+
+        /* Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--soft-purple);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(108, 92, 231, 0.3);
+        }
+
+        /* Hamburger Icon */
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--soft-purple);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #444;
+            font-weight: 600;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--soft-purple);
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10%;
+            gap: 50px;
+        }
+
+        .hero-text {
+            flex: 1;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-text h1 {
+            font-size: 64px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #6c5ce7, #0984e3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #636e72;
+            max-width: 500px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--soft-purple);
+            color: white !important;
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.4);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--soft-purple);
+            color: var(--soft-purple);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(108, 92, 231, 0.2);
+        }
+
+        /* Hero Image */
+        .hero-img {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .img-container {
+            width: 450px;
+            height: 450px;
+            background: var(--glass);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 6s ease-in-out infinite, morph 8s ease-in-out infinite;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .img-container img {
+            width: 90%;
+            height: 90%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--wa-green);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes morph {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 968px) {
+            header { padding: 15px 5%; }
+            .menu-toggle { display: block; }
+            
+            nav ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                padding: 20px 0;
+                display: none;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            }
+
+            nav ul.active { display: flex; }
+            nav ul li { margin: 15px 0; }
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 120px;
+                height: auto;
+                padding-bottom: 50px;
+            }
+            .hero-text h1 { font-size: 40px; }
+            .img-container { width: 280px; height: 280px; }
+            .btn-group { flex-direction: column; align-items: center; }
+        }/* Founder Intro Section Styling */
+        .founder-intro {
+            padding: 100px 10%;
+            background: #fff; /* White background to separate from hero */
+            position: relative;
+        }
+
+        .founder-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Image Styling */
+        .founder-image-area {
+            position: relative;
+        }
+
+        .image-stack {
+            position: relative;
+            z-index: 1;
+        }
+
+        .image-stack::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--brand-blue);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .main-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: 30px;
+            left: -40px;
+            background: var(--brand-blue);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,51,153,0.3);
+        }
+
+        .experience-badge .years {
+            font-size: 32px;
+            font-weight: 800;
+            display: block;
+        }
+
+        .experience-badge .exp-text {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Content Styling */
+        .title-tag {
+            color: var(--soft-purple);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 14px;
+        }
+
+        .founder-name {
+            font-size: 44px;
+            margin: 10px 0;
+            color: #2d3436;
+        }
+
+        .founder-name span {
+            color: var(--brand-blue);
+        }
+
+        .founder-specialty {
+            color: #636e72;
+            font-style: italic;
+            margin-bottom: 25px;
+            font-size: 18px;
+        }
+
+        .personal-note {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #444;
+            border-left: 4px solid var(--soft-purple);
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        .founder-qualities {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .q-box {
+            background: #f8f9fa;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #2d3436;
+            border: 1px solid #eee;
+        }
+
+        .q-box i {
+            color: var(--brand-blue);
+        }
+
+        /* Mobile View */
+        @media (max-width: 968px) {
+            .founder-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .experience-badge {
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -20px;
+            }
+            .personal-note {
+                border-left: none;
+                border-top: 3px solid var(--soft-purple);
+                padding: 20px 0 0;
+            }
+            .founder-qualities {
+                justify-content: center;
+            }
+        }.course-section {
+    padding: 80px 10%;
+    text-align: center;
+}
+
+.course-header h2 {
+    font-size: 42px;
+    background: linear-gradient(to right, #6c5ce7, #0984e3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.course-header p {
+    color: #636e72;
+    margin-bottom: 50px;
+}
+
+.course-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.course-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    padding: 25px 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: 0.3s;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+}
+
+.course-left {
+    text-align: left;
+}
+
+.course-left h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.course-left p {
+    font-size: 14px;
+    color: #555;
+}
+
+.price {
+    display: block;
+    margin-top: 8px;
+    font-weight: bold;
+    color: #6c5ce7;
+}
+
+.buy-btn {
+    background: #25D366;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.buy-btn:hover {
+    background: #1ebe5d;
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .course-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .buy-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <header id="navbar">
+        <div class="logo">NNUMERO MAGIC</div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <nav>
+            <ul id="nav-list">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+              <li><a href="https://wa.me/919822568660?text=Hi%20Amit%20sir,%20I%20want%20to%20book%20a%20consultation." class="btn btn-primary" style="padding: 10px 25px;" target="_blank">Book Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Unlock Your <br>Destiny with <br><span>Astrology</span></h1>
+            <p>Experience personalized Vedic insights to bring balance, success, and peace back into your life.</p>
+            <div class="btn-group">
+                <a href="#" class="btn btn-primary">Get Consultation</a>
+                <a href="#" class="btn btn-secondary">Explore Services</a>
+            </div>
+        </div>
+
+        <div class="hero-img">
+            <div class="img-container">
+                <img src="nnumerology logo.jpeg" alt="Astrology Expert">
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/9198225 68660X" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+<style>
+    /* 1. Theme Continuation - Making sure background is seamless */
+    body {
+        background-attachment: fixed; /* This keeps the gradient same while scrolling */
+    }
+
+    .founder-intro {
+        padding: 100px 10%;
+        position: relative;
+        z-index: 1;
+        /* No solid background here, it will show the body gradient */
+    }
+
+    .founder-container {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 80px;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        /* Glassmorphism Card for the whole section */
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 40px;
+        padding: 50px;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.05);
+    }
+
+    /* 2. Image Area with Floating Animation */
+    .founder-image-area {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .main-img {
+        width: 100%;
+        max-width: 400px;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 30px;
+        box-shadow: 0 20px 40px rgba(108, 92, 231, 0.2);
+        border: 5px solid rgba(255, 255, 255, 0.5);
+    }
+
+    /* 3. Highlighted Experience Badge (The 'Important' element) */
+    .experience-badge {
+        position: absolute;
+        bottom: -30px; /* Slightly overlapping bottom */
+        background: linear-gradient(135deg, var(--soft-purple), var(--deep-blue));
+        color: white;
+        padding: 20px 40px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 15px 35px rgba(108, 92, 231, 0.5);
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        z-index: 10;
+        transition: transform 0.3s ease;
+    }
+
+    .experience-badge:hover {
+        transform: scale(1.05);
+    }
+
+    .experience-badge .years {
+        font-size: 38px;
+        font-weight: 800;
+        display: block;
+        line-height: 1;
+        margin-bottom: 5px;
+    }
+
+    .experience-badge .exp-text {
+        font-size: 14px;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        opacity: 0.9;
+    }
+
+    /* 4. Content Area Styling */
+    .founder-details .title-tag {
+        color: var(--soft-purple);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 14px;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .founder-name {
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 5px;
+        background: linear-gradient(to right, var(--soft-purple), var(--deep-blue));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .founder-specialty {
+        color: #444;
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 25px;
+        opacity: 0.8;
+    }
+
+    .personal-note {
+        font-size: 17px;
+        line-height: 1.8;
+        color: #555;
+        background: rgba(255, 255, 255, 0.3);
+        padding: 25px;
+        border-radius: 20px;
+        border-left: 5px solid var(--soft-purple);
+        margin-bottom: 30px;
+    }
+
+    /* 5. Feature Badges */
+    .founder-qualities {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+    }
+
+    .q-box {
+        background: rgba(255, 255, 255, 0.5);
+        padding: 12px 20px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #2d3436;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        transition: 0.3s;
+    }
+
+    .q-box i {
+        color: var(--soft-purple);
+        font-size: 18px;
+    }
+
+    .q-box:hover {
+        background: white;
+        transform: translateY(-3px);
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 968px) {
+        .founder-container {
+            grid-template-columns: 1fr;
+            padding: 30px 20px;
+            margin: 0 10px;
+            text-align: center;
+        }
+        
+        .founder-image-area {
+            margin-bottom: 60px;
+        }
+
+        .main-img {
+            height: 400px;
+        }
+
+        .experience-badge {
+            bottom: -40px;
+            padding: 15px 30px;
+        }
+
+        .personal-note {
+            text-align: left;
+            border-left: none;
+            border-top: 5px solid var(--soft-purple);
+        }
+
+        .founder-qualities {
+            justify-content: center;
+        }
+
+        .founder-name {
+            font-size: 36px;
+        }
+    }
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+    :root {
+        --gold: #ffcc00;
+        --deep-bg: #0a0a0c;
+        --glass-white: rgba(255, 255, 255, 0.05);
+        --border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .founder-intro {
+        background-color: var(--deep-bg);
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        padding: 80px 5%;
+        overflow: hidden;
+    }
+
+    .founder-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1.6fr;
+        gap: 50px;
+        align-items: start;
+    }
+
+    /* Left Side: Image */
+    .founder-image-area {
+        position: sticky;
+        top: 20px;
+    }
+
+    .main-img {
+        width: 100%;
+        border-radius: 25px;
+        filter: grayscale(20%);
+        border: 1px solid var(--border-color);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .experience-badge {
+        position: absolute;
+        bottom: -15px;
+        right: -15px;
+        background: var(--gold);
+        color: #000;
+        padding: 12px 20px;
+        border-radius: 15px;
+        font-weight: 700;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        line-height: 1.2;
+    }
+
+    .experience-badge .years { font-size: 22px; display: block; }
+    .experience-badge .exp-text { font-size: 11px; text-transform: uppercase; }
+
+    /* Right Side: Details */
+    .title-tag {
+        color: var(--gold);
+        letter-spacing: 2px;
+        font-size: 13px;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .founder-name {
+        font-family: 'Cinzel', serif;
+        font-size: 42px;
+        margin-bottom: 5px;
+    }
+
+    .founder-specialty {
+        font-size: 18px;
+        color: #888;
+        margin-bottom: 25px;
+        font-weight: 400;
+    }
+
+    .personal-note {
+        font-size: 15px;
+        color: #ccc;
+        line-height: 1.8;
+        margin-bottom: 25px;
+    }
+
+    .quote-box {
+        background: var(--glass-white);
+        border-left: 4px solid var(--gold);
+        padding: 20px;
+        margin-bottom: 30px;
+        border-radius: 0 15px 15px 0;
+    }
+
+    .quote-box p {
+        font-style: italic;
+        font-size: 18px;
+        color: #fff;
+        margin: 0;
+    }
+
+    /* Grid Sections */
+    .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 35px;
+    }
+
+    .info-card {
+        background: var(--glass-white);
+        padding: 15px;
+        border-radius: 15px;
+        border: 1px solid var(--border-color);
+    }
+
+    .info-card h5 { color: var(--gold); margin: 0 0 8px 0; font-size: 15px; }
+    .info-card p, .info-card li { font-size: 13px; color: #bbb; margin: 0; list-style: none; padding: 0;}
+
+    /* Badges/Tags */
+    .course-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+    }
+
+    .tag {
+        background: rgba(255,204,0,0.1);
+        color: var(--gold);
+        padding: 5px 12px;
+        border-radius: 50px;
+        font-size: 11px;
+        border: 1px solid rgba(255,204,0,0.2);
+    }
+
+    .btn-primary {
+        background: var(--gold);
+        color: #000 !important;
+        padding: 18px 40px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        display: inline-block;
+        transition: 0.3s;
+        text-transform: uppercase;
+        font-size: 14px;
+        margin-top: 20px;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(255, 204, 0, 0.3);
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+        .founder-container { grid-template-columns: 1fr; }
+        .founder-image-area { max-width: 400px; margin: 0 auto 50px; position: relative; }
+        .info-grid { grid-template-columns: 1fr; }
+        .founder-name { font-size: 32px; }
+    }
+</style>
+
+<section  id="founder-intro" class="founder-intro">
+    <div class="founder-container">
+        
+        <div class="founder-image-area">
+            <img src="Screenshot 2026-04-23 214517.png" alt="Amit R Chokhani" class="main-img">
+            <div class="experience-badge">
+                <span class="years">10+</span>
+                <span class="exp-text">Years of Wisdom</span>
+            </div>
+        </div>
+
+        <div class="founder-details">
+            <span class="title-tag">Welcome to Nnumero Magic ✨</span>
+            <h2 class="founder-name">Amit R. Chokhani</h2>
+            <h4 class="founder-specialty">Astro-Numerologist | Graphologist</h4>
+            
+            <p class="personal-note">
+                Hello and a warm welcome! I am Amit R. Chokhani, and I’m truly glad you are here. 
+                Nnumero Magic is not just a platform—it is a journey towards self-awareness, clarity, and inner transformation. 
+                This space is created for growth-oriented individuals who believe life’s challenges are opportunities waiting for a shift in perspective.
+            </p>
+
+            <div class="quote-box">
+                <p>“When you change the way you see things, the things you see begin to change.”</p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h5><i class="fas fa-bullseye"></i> Our Mission</h5>
+                    <p>To provide authentic, result-oriented knowledge in Occult Sciences for better life decisions.</p>
+                </div>
+
+                <div class="info-card">
+                    <h5><i class="fas fa-star"></i> Why Choose Us?</h5>
+                    <p>Authentic Knowledge • Practical Tools • Holistic Growth • Expert Guidance</p>
+                </div>
+
+                <div class="info-card">
+                    <h5><i class="fas fa-chalkboard-teacher"></i> Expert Mentors</h5>
+                    <li>🔹 Amit R. Chokhani</li>
+                    <li>🔹 Preiti Sabharwal</li>
+                    <li>🔹 Charuhansii Yadav | Ankitha Shashi</li>
+                </div>
+
+                <div class="info-card">
+                    <h5><i class="fas fa-eye"></i> Our Vision</h5>
+                    <p>Align your energy and unlock your true potential for a fulfilling life.</p>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <h5 style="color:var(--gold); margin-bottom:10px; font-size:14px;">Specialized Programs:</h5>
+                <div class="course-tags">
+                    <span class="tag">Vedic Numerology</span>
+                    <span class="tag">Mobile Numerology</span>
+                    <span class="tag">Signature Analysis</span>
+                    <span class="tag">Graphology</span>
+                    <span class="tag">Nadi Astrology</span>
+                    <span class="tag">Watch Analysis</span>
+                    <span class="tag">Medical Numerology</span>
+                    <span class="tag">Reiki Healing</span>
+                    <span class="tag">Handwriting Improvement</span>
+                    <span class="tag">Name Pronology</span>
+                </div>
+            </div>
+
+            <div class="signature-area">
+                <a href="https://wa.me/919822568660?text=Hi%20Amit%20sir%20I%20want%20to%20discuss%20u%20about%20personal%20session" class="btn btn-primary" target="_blank">Book Personal Session</a>
+                <p style="margin-top:20px; font-style:italic; color:#666; font-size:13px;">✨ Because real magic is not outside… it’s within you.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+<style>
+    /* --- Team Section Styling --- */
+    .team-section {
+        padding: 80px 10%;
+        position: relative;
+        z-index: 1;
+        background: transparent; /* Seamless continuation */
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+        font-size: 42px;
+        background: linear-gradient(to right, var(--soft-purple), var(--deep-blue));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 10px;
+    }
+
+    .section-header p {
+        color: #636e72;
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+
+    /* Founder Highlight Card */
+    .founder-highlight {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 80px;
+    }
+
+    .founder-card {
+        width: 100%;
+        max-width: 500px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 30px;
+        padding: 40px;
+        text-align: center;
+        transition: 0.4s ease;
+        box-shadow: 0 20px 40px rgba(108, 92, 231, 0.15);
+    }
+
+    .founder-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 30px 60px rgba(108, 92, 231, 0.25);
+        border: 1px solid var(--soft-purple);
+    }
+
+    /* Team Grid */
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .member-card {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 25px;
+        padding: 30px;
+        text-align: center;
+        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .member-card:hover {
+        transform: translateY(-8px);
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    /* Common Card Elements */
+    .member-img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        object-fit: cover;
+        border: 3px solid white;
+        transition: 0.3s;
+    }
+
+    .founder-card .member-img {
+        width: 160px;
+        height: 160px;
+        border: 4px solid var(--soft-purple);
+    }
+
+    .member-card:hover .member-img {
+        transform: scale(1.1);
+    }
+
+    .member-info h3 {
+        color: #2d3436;
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+
+    .member-info .role {
+        color: var(--soft-purple);
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .member-info .desc {
+        color: #555;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .social-links {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .social-links a {
+        color: #636e72;
+        font-size: 16px;
+        transition: 0.3s;
+    }
+
+    .social-links a:hover {
+        color: var(--soft-purple);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 968px) {
+        .team-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .team-grid {
+            grid-template-columns: 1fr;
+        }
+        .founder-card {
+            padding: 30px 20px;
+        }
+    }
+</style>
+
+<section class="team-section">
+    <div class="section-header">
+        <h2>Meet Our Team</h2>
+        <p>Guiding You with Wisdom, Experience & Pure Intentions</p>
+    </div>
+
+    <div class="founder-highlight">
+        <div class="founder-card">
+            <img src="Screenshot 2026-04-23 214517.png" alt="Amit R Chokhani" class="member-img">
+            <div class="member-info">
+                <span class="role">Astro-Numerologist/Graphologist/Signature Expert</span>
+                <h3>AMIT R CHOKHANI</h3>
+                <p class="desc">A visionary guide with 10+ years of experience helping thousands align their lives with the energy of numbers. Blends the power of astrology, numerology, and graphology to uncover hidden life patterns and energies.
+Expert in signature analysis, providing practical insights to enhance personality, success, and personal growth.
+</p>
+                <div class="social-links">
+                    <!-- <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+       <div class="member-card">
+            <img src="Screenshot 2026-04-23 214151.png" alt="Team Member" class="member-img">
+            <div class="member-info">
+                <span class="role">Reiki Healer/Tarot</span>
+                <h3>ANKITHA SHASHI</h3>
+                <p class="desc">Certified Reiki Healer with expertise in energy balancing and holistic healing practices.
+Skilled Tarot Reader providing intuitive guidance and clarity for life’s decisions.
+</p>
+                <div class="social-links">
+                    <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
+                </div>
+            </div>
+        </div>
+                <div class="member-card">
+            <img src="Screenshot 2026-04-23 214427.png" alt="Team Member" class="member-img">
+            <div class="member-info">
+                <span class="role">Numerologist
+                    /Graphologist/Signature Expert/Tarot/Reiki
+                </span>
+                <h3>PRIETI SABHARWAL</h3>
+                <p class="desc">Combines multiple healing sciences to offer holistic guidance for life, relationships, and career.
+Balances energy, predicts outcomes, and provides spiritual healing for overall well-being.</p>
+                <div class="social-links">
+                    <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
+                </div>
+            </div>
+        </div>
+    <div class="team-grid">
+        <div class="member-card">
+            <img src="Screenshot 2026-04-23 214840.png" alt="Team Member" class="member-img">
+            <div class="member-info">
+                <span class="role">Celebrity-Numerologist/Name Designing Expert/Vastu-Consulant</span>
+                <h3>CHARUHANSI MA'AM</h3>
+                <p class="desc">Renowned celebrity numerologist specializing in impactful name designing for success and recognition.
+Provides expert Vastu consultations to align spaces with positive energy, growth, and harmony.
+</p>
+                <div class="social-links">
+                    <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
+                </div>
+            </div>
+        </div>
+        <div class="member-card">
+            <img src="Screenshot 2026-04-23 215015.png" alt="Team Member" class="member-img">
+            <div class="member-info">
+                <span class="role">Remedy Expert</span>
+                <h3>NISHA HARIYANI</h3>
+                <p class="desc">Specializes in providing effective astrological and spiritual remedies to overcome life challenges.
+Offers personalized solutions to restore balance, positivity, and long-term success.
+</p>
+                <div class="social-links">
+                    <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
+                </div>
+            </div>
+        </div>
+        <div class="member-card">
+            <img src="Screenshot 2026-04-23 215137.png" alt="Team Member" class="member-img">
+            <div class="member-info">
+                <span class="role">Handwriting Expert</span>
+                <h3>NEHA AGARWAL</h3>
+                <p class="desc">Analyzes handwriting patterns to reveal personality traits, mindset, and emotional tendencies.
+Provides practical insights to improve behavior, confidence, and overall personal growth.
+</p>
+                <div class="social-links">
+                    <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="member-card">
+            <img src="Mamta CHHAWCHHARIA.jpeg" alt="Team Member" class="member-img">
+            <div class="member-info">
+                <span class="role">Watch Analysis</span>
+                <h3>MAMTA CHHAWCHHARIA</h3>
+                <p class="desc">Analyzes watch-wearing patterns and time-related habits to reveal personality traits and lifestyle tendencies.
+Provides unique insights to help improve time management, decision-making, and personal balance.
+</p>
+                <div class="social-links">
+                    <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+ 
+    </div>
+</section>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+    .spiritual-master-section, .spiritual-master-section * {
+        font-family: 'Cinzel', serif !important;
+        box-sizing: border-box;
+    }
+
+    .spiritual-master-section {
+        background-color: #000;
+        color: #fff;
+        padding: 60px 4%;
+        overflow-x: hidden;
+    }
+
+    /* Heading: Big & Bold on Mobile */
+    .header-container {
+        border-left: 6px solid #ffcc00;
+        padding-left: 20px;
+        margin-bottom: 50px;
+    }
+
+    .header-container h2 {
+        font-size: clamp(28px, 7vw, 65px);
+        font-weight: 900;
+        text-transform: uppercase;
+        margin: 0;
+        color: #ffffff;
+        line-height: 1.1;
+    }
+
+    .header-container h2 span {
+        color: #ffcc00;
+        font-style: italic;
+        display: block;
+    }
+
+    /* Category Labels */
+    .cat-title {
+        text-align: center;
+        margin: 80px 0 30px;
+    }
+
+    .cat-title h3 {
+        color: #ffcc00;
+        font-size: clamp(22px, 5vw, 32px);
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        border-bottom: 3px solid #ffcc00;
+        display: inline-block;
+        padding-bottom: 8px;
+    }
+
+    /* Animation Row Setup */
+    .service-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 0;
+        border-bottom: 1px solid #222;
+        gap: 15px;
+        opacity: 0;
+        transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
+    }
+
+    .slide-left { transform: translateX(-100px); }
+    .slide-right { transform: translateX(100px); }
+
+    .service-row.active {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .left-side {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex: 1;
+    }
+
+    .left-side svg {
+        width: clamp(32px, 6vw, 45px);
+        fill: #ffcc00;
+        flex-shrink: 0;
+    }
+
+    .text-side h4 {
+        font-size: clamp(16px, 3.5vw, 26px);
+        font-weight: 700;
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    .text-side p {
+        color: #aaa;
+        font-size: clamp(11px, 2.5vw, 15px);
+        margin: 5px 0 0 0;
+        line-height: 1.3;
+    }
+
+    /* Consult Button: Fixed Right */
+    .consult-btn {
+        background-color: #ffcc00;
+        color: #000 !important;
+        padding: 12px 24px;
+        text-decoration: none;
+        font-weight: 900;
+        font-size: clamp(10px, 2.2vw, 14px);
+        text-transform: uppercase;
+        border-radius: 4px;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: 0.3s;
+    }
+
+    .consult-btn:hover {
+        background-color: #fff;
+        transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+        .service-row { gap: 10px; }
+        .text-side p { max-width: 140px; }
+        .header-container h2 { font-size: 24px; }
+    }
+</style>
+
+<section class="spiritual-master-section">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        .mobile-header-wrapper {
+            background-color: #000;
+            padding: 40px 15px;
+        }
+
+        .header-border-fix {
+            border-left: 6px solid #ffcc00;
+            padding-left: 15px;
+        }
+
+        .header-border-fix h2 {
+            font-size: 50px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin: 0;
+            color: #ffffff;
+            line-height: 1.1;
+            font-family: 'Cinzel', serif !important;
+        }
+
+        .header-border-fix h2 span {
+            color: #ffcc00;
+            font-style: italic;
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .header-border-fix h2 {
+                font-size: 28px; 
+                letter-spacing: 0.5px;
+                white-space: nowrap;
+            }
+            
+            .header-border-fix h2 span {
+                display: block;
+                font-size: 32px;
+                margin-top: 2px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .header-border-fix h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+
+    <div class="mobile-header-wrapper">
+        <div class="header-border-fix">
+            <h2>Expert Spiritual <span>Services</span></h2>
+        </div>
+    </div>
+
+    <!-- <div class="cat-title"><h3>Numerology</h3></div> -->
+    
+    <div class="service-row slide-left">
+        <div class="left-side">
+            <svg viewBox="0 0 24 24"><path d="M17,19H7V5H17M17,1H7C5.89,1 5,1.89 5,3V21C5,22.1 5.9,23 7,23H17C18.1,23 19,22.1 19,21V3C19,1.89 18.1,1 17,1Z"/></svg>
+            <div class="text-side">
+                <h4>NUMEROLOGY LIFE REPORT</h4>
+                <p>MOBILE,NAME,CAREER,HEALTH</p>
+            </div>
+        </div>
+        <a href="https://wa.me/919822568660?text=Hi%20Sir%20I%20want%20to%20discuss%20you%20about%20numerology%20life%20report" class="consult-btn">Consult Now</a>
+    </div>
+
+    <div class="service-row slide-right">
+        <div class="left-side">
+            <svg viewBox="0 0 24 24"><path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"/></svg>
+            <div class="text-side">
+                <h4>ASTROLOGY CONSULTATION</h4>
+                <p>MARRIAGE,CHILDBIRTH,CAREER,HEALTH</p>
+            </div>
+        </div>
+        <a href="https://wa.me/919822568660?text=Hi%20Sir%20I%20want%20to%20discuss%20you%20about%20astrology%20consultation" class="consult-btn">Consult Now</a>
+    </div>
+
+    <div class="service-row slide-left">
+        <div class="left-side">
+            <svg viewBox="0 0 24 24"><path d="M12,7V3H2V18H3V21H9V18H11V21H17V18H18V21H22V18H18V7H12M4,16H6V14H4V16M4,12H6V10H4V12M4,8H6V6H4V8M10,16H8V14H10V16M10,12H8V10H10V12M10,8H8V6H10V8M16,16H14V14H16V16M16,12H14V10H16V12M16,8H14V6H16V8M20,16H18V14H20V16M20,12H18V10H20V12M20,8H18V6H20V8Z"/></svg>
+            <div class="text-side">
+                <h4>SIGNATURE ANALYSIS</h4>
+                <!-- <p>Decode your signature to reveal personality and life direction.</p> -->
+            </div>
+        </div>
+        <a href="https://wa.me/919822568660?text=Hi%20Sir%20I%20want%20to%20discuss%20you%20about%20signature%20analysis" class="consult-btn">Consult Now</a>
+    </div>
+
+    <!-- <div class="cat-title"><h3>Graphology</h3></div> -->
+
+    <div class="service-row slide-right">
+        <div class="left-side">
+            <svg viewBox="0 0 24 24"><path d="M20.7,7C21.1,6.6 21.1,6 20.7,5.6L18.4,3.3C18,2.9 17.4,2.9 17,3.3L15.2,5.1L18.9,8.8M3,17.2V21H6.8L17.8,9.9L14.1,6.1L3,17.2Z"/></svg>
+            <div class="text-side">
+                <h4>HANDWRITING ANALYSIS</h4>
+                <!-- <p>Reveal personality traits and hidden patterns through writing.</p> -->
+            </div>
+        </div>
+        <a href="https://wa.me/919822568660?text=Hi%20Sir%20I%20want%20to%20discuss%20you%20about%20handwriting%20analysis" class="consult-btn">Consult Now</a>
+    </div>
+
+    <div class="service-row slide-left">
+        <div class="left-side">
+          <svg viewBox="0 0 24 24"><path d="M12,2L14.39,8.26L21,8.96L15.85,13.3L17.36,19.83L12,16.47L6.64,19.83L8.15,13.3L3,8.96L9.61,8.26L12,2Z"/></svg>
+            <div class="text-side">
+                <h4>HEALING/REIKI/TAROT READING</h4>
+                <!-- <p>Decode your signature to reveal personality and life direction.</p> -->
+            </div>
+        </div>
+        <a href="https://wa.me/919822568660?text=Hi%20Sir%20I%20want%20to%20discuss%20you%20about%20healing%20reiki%20tarot%20reading" class="consult-btn">Consult Now</a>
+    </div>
+
+    <div class="service-row slide-right">
+        <div class="left-side">
+         <svg viewBox="0 0 24 24"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
+            <div class="text-side">
+                <h4>WATCH ANALYSIS</h4>
+                <!-- <p>Transform your handwriting to positively influence growth.</p> -->
+            </div>
+        </div>
+        <a href="https://wa.me/919822568660?text=Hi%20Sir%20I%20want%20to%20discuss%20you%20about%20watch%20analysis" class="consult-btn">Consult Now</a>
+    </div>
+
+    <!-- <div class="cat-title"><h3>Astrology</h3></div>
+
+    <div class="service-row slide-left">
+        <div class="left-side">
+            <svg viewBox="0 0 24 24"><path d="M12,2L14.39,8.26L21,8.96L15.85,13.3L17.36,19.83L12,16.47L6.64,19.83L8.15,13.3L3,8.96L9.61,8.26L12,2Z"/></svg>
+            <div class="text-side">
+                <h4>Major Life Events</h4>
+                <p>Gain insights into key life phases and turning points.</p>
+            </div>
+        </div>
+        <a href="https://wa.me/919822568660?text=Hi%20Sir%20I%20want%20to%20discuss%20you%20about%20major%20life%20events" class="consult-btn">Consult Now</a>
+    </div>
+
+    <div class="service-row slide-right">
+        <div class="left-side">
+            <svg viewBox="0 0 24 24"><path d="M20,6C21.1,6 22,6.9 22,8V19C22,20.1 21.1,21 20,21H4C2.9,21 2,20.1 2,19V8C2,6.9 2.9,6 4,6H8V4C8,2.9 8.9,2 10,2H14C15.1,2 16,2.9 16,4V6H20M10,4V6H14V4H10Z"/></svg>
+            <div class="text-side">
+                <h4>Career Advice</h4>
+                <p>Gain insights into the right paths and timing for success.</p>
+            </div>
+        </div>
+        <a href="https://wa.me/919822568660?text=Hi%20Sir%20I%20want%20to%20discuss%20you%20about%20career%20advice" class="consult-btn">Consult Now</a>
+    </div>
+
+    <div class="service-row slide-left">
+        <div class="left-side">
+            <svg viewBox="0 0 24 24"><path d="M12,1L9,5H11V11H9L12,15L15,11H13V5H15L12,1M12,18C9.79,18 8,19.79 8,22H16C16,19.79 14.21,18 12,18Z"/></svg>
+            <div class="text-side">
+                <h4>Marriage & Child</h4>
+                <p>Get insights into marriage timing and children prospects.</p>
+            </div>
+        </div>
+        <a href="https://wa.me/919822568660?text=Hi%20Sir%20I%20want%20to%20discuss%20you%20about%20marriage%20and%20child" class="consult-btn">Consult Now</a>
+    </div>
+
+    <div class="service-row slide-right">
+        <div class="left-side">
+            <svg viewBox="0 0 24 24"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
+            <div class="text-side">
+                <h4>Gemstone Advice</h4>
+                <p>Find the right gemstone to balance your energies.</p>
+            </div>
+        </div>
+        <a href="https://wa.me/919822568660?text=Hi%20Sir%20I%20want%20to%20discuss%20u%20about%20gemstone%20advice" class="consult-btn">Consult Now</a>
+    </div> -->
+</section>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.service-row').forEach(row => {
+        observer.observe(row);
+    });
+</script>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.service-row').forEach(row => observer.observe(row));
+</script>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.service-row').forEach(row => observer.observe(row));
+</script>
+
+<section  id="course-section" class="course-section">
+    <div class="course-header">
+        <h2>Premium Courses</h2>
+        <p>Upgrade your knowledge with powerful spiritual sciences</p>
+    </div>
+
+    <div class="course-container">
+
+        <!-- Course Item -->
+        <div class="course-card">
+            <div class="course-left">
+                <h3>Vedic Numerology</h3>
+                <p>Master the science of numbers to predict life patterns, success, and destiny.</p>
+                <span class="price">₹15,000</span>
+            </div>
+            <a href="https://wa.me/919822568660?text=Hello,%20I%20want%20to%20buy%20Vedic%20Numerology%20Course" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="course-card">
+            <div class="course-left">
+                <h3>Nadi Astrology</h3>
+                <p>Learn ancient prediction techniques to reveal past, present, and future.</p>
+                <span class="price">₹12,000</span>
+            </div>
+            <a href="https://wa.me/919822568660?text=Hello,%20I%20want%20to%20buy%20Nadi%20Astrology%20Course" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="course-card">
+            <div class="course-left">
+                <h3>Signature Analysis</h3>
+                <p>Decode personality and success patterns through signature science.</p>
+                <span class="price">₹6,500</span>
+            </div>
+            <a href="https://wa.me/919822568660?text=Hello,%20I%20want%20to%20buy%20Signature%20Analysis%20Course" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="course-card">
+            <div class="course-left">
+                <h3>Handwriting Improvement (Kids)</h3>
+                <p>Improve kids’ handwriting, focus, and confidence with proven techniques.</p>
+                <span class="price">₹3,600</span>
+            </div>
+            <a href="https://wa.me/919822568660?text=Hello,%20I%20want%20to%20buy%20Handwriting%20Improvement%20Course" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="course-card">
+            <div class="course-left">
+                <h3>Name Numerology</h3>
+                <p>Learn how names impact success, energy, and life direction.</p>
+                <span class="price">₹16,000</span>
+            </div>
+            <a href="https://wa.me/919822568660?text=Hello,%20I%20want%20to%20buy%20Name%20Numerology%20Course" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="course-card">
+            <div class="course-left">
+                <h3>Loshu Grid</h3>
+                <p>Understand Lo Shu grid to analyze strengths, weaknesses, and life balance.</p>
+                <span class="price">₹1,100</span>
+            </div>
+            <a href="https://wa.me/919822568660?text=Hello,%20I%20want%20to%20buy%20Loshu%20Course" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="course-card">
+            <div class="course-left">
+                <h3>Mobile Numerology</h3>
+                <p>Learn how mobile numbers influence energy, luck, and opportunities.</p>
+                <span class="price">₹3,500</span>
+            </div>
+            <a href="https://wa.me/919822568660?text=Hello,%20I%20want%20to%20buy%20Mobile%20Numerology%20Course" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="course-card">
+            <div class="course-left">
+                <h3>Medical Numerology</h3>
+                <p>Discover connections between numbers, health, and well-being.</p>
+                <span class="price">₹3,600</span>
+            </div>
+            <a href="https://wa.me/919822568660?text=Hello,%20I%20want%20to%20buy%20Medical%20Numerology%20Course" class="buy-btn">Buy Now</a>
+        </div>
+
+        <div class="course-card">
+            <div class="course-left">
+                <h3>Reiki Healing</h3>
+                <p>Learn energy healing techniques for balance, peace, and spiritual growth.</p>
+                <span class="price">₹2,100</span>
+            </div>
+            <a href="https://wa.me/919822568660?text=Hello,%20I%20want%20to%20buy%20Reiki%20Course" class="buy-btn">Buy Now</a>
+        </div>
+
+    </div>
+</section>
+<style>
+    .new-venture-section {
+        padding: 120px 8%;
+        background: transparent;
+        position: relative;
+    }
+
+    .venture-wrapper {
+        display: flex;
+        align-items: center; /* Vertical center */
+        justify-content: center; /* Horizontal center overall */
+        gap: 80px; 
+        max-width: 1300px;
+        margin: 0 auto;
+    }
+
+    /* Left Side Logo Box */
+    .venture-logo-box {
+        flex: 1;
+        display: flex;
+        justify-content: center; /* Logo ko horizontally center karne ke liye */
+        align-items: center;    /* Logo ko vertically center karne ke liye */
+    }
+
+    /* Black Canvas for Logo */
+    .logo-canvas {
+        width: 400px;
+        height: 400px;
+        background: #000000; /* Yahan Black kar diya hai */
+        border-radius: 40px; /* Modern Rounded Corners */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+        transition: transform 0.4s ease;
+        overflow: hidden; /* Taaki image corners se bahar na nikle */
+    }
+
+    .logo-canvas:hover {
+        transform: translateY(-10px);
+    }
+
+    .logo-canvas img {
+        width: 90%; /* Logo thoda sa gap rakhega edges se toh premium lagega */
+        height: auto;
+        display: block;
+        object-fit: contain;
+    }
+
+    /* Right Side Content */
+    .venture-content {
+        flex: 1.3;
+    }
+
+    .venture-tag {
+        color: var(--soft-purple);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        font-size: 14px;
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .venture-title {
+        font-size: 52px;
+        line-height: 1.1;
+        margin-bottom: 45px;
+        color: #1a1a1a;
+        font-weight: 700;
+    }
+
+    .venture-title span {
+        background: linear-gradient(135deg, #6c5ce7, #00d2ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .detail-item {
+        margin-bottom: 40px;
+    }
+
+    .detail-item h4 {
+        font-size: 26px;
+        color: #2d3436;
+        margin-bottom: 12px;
+        font-weight: 600;
+    }
+
+    .detail-item p {
+        font-size: 19px;
+        line-height: 1.8;
+        color: #555;
+        font-weight: 400;
+    }
+
+    /* Responsive View */
+    @media (max-width: 1024px) {
+        .venture-wrapper {
+            flex-direction: column;
+            text-align: center;
+            gap: 50px;
+        }
+        .venture-title { font-size: 36px; }
+        .logo-canvas { 
+            width: 320px; 
+            height: 320px; 
+        }
+        .venture-logo-box {
+            width: 100%;
+        }
+    }
+</style>
+
+<section   class="new-venture-section">
+    <div class="venture-wrapper">
+        
+        <div class="venture-logo-box">
+            <div class="logo-canvas">
+                <img src="Screenshot 2026-04-23 162234.png" alt="Ghyan Srotah Logo">
+            </div>
+        </div>
+
+        <div class="venture-content">
+            <span class="venture-tag">Expanding Our Vision</span>
+            <h2 class="venture-title">Our New Business: <br><span>The Path of Wisdom</span></h2>
+
+            <div class="detail-item">
+                <h4>Personalized Guidance</h4>
+                <p>“Get personalized guidance using powerful occult sciences to understand your life patterns, challenges, and opportunities.”</p>
+            </div>
+
+            <div class="detail-item">
+                <h4>🌟 Learn Occult Sciences</h4>
+                <p>“Turn ancient knowledge into a life skill. Learn how to guide yourself and others using practical and scientific occult techniques.”</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+<style>
+    .review-master-section {
+        padding: 80px 0;
+        background: #ffffff;
+        overflow: hidden;
+        user-select: none; /* Selection block taaki drag ke waqt text select na ho */
+    }
+
+    /* Heading Area */
+    .review-title-area {
+        text-align: center;
+        margin-bottom: 50px;
+        padding: 0 20px;
+    }
+
+    .badge-wrap {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(108, 92, 231, 0.05);
+        padding: 8px 20px;
+        border-radius: 50px;
+        border: 1px solid rgba(108, 92, 231, 0.1);
+        margin-bottom: 25px;
+    }
+
+    .badge-wrap span {
+        font-size: 13px;
+        font-weight: 700;
+        color: #6c5ce7;
+        text-transform: uppercase;
+    }
+
+    .review-title-area h2 {
+        font-size: clamp(32px, 5vw, 56px);
+        color: #111;
+        font-weight: 900;
+        line-height: 1.1;
+        margin-bottom: 20px;
+    }
+
+    .review-title-area h2 span {
+        background: linear-gradient(to right, #6c5ce7, #00d2ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* Slider Container */
+    .scroll-wrapper {
+        width: 100%;
+        overflow-x: auto; /* Enable manual scroll */
+        cursor: grab;
+        padding: 20px 0;
+        scrollbar-width: none; /* Hidden scrollbar for Firefox */
+    }
+
+    .scroll-wrapper::-webkit-scrollbar {
+        display: none; /* Hidden scrollbar for Chrome/Safari */
+    }
+
+    .scroll-wrapper:active {
+        cursor: grabbing;
+    }
+
+    .scroller-logic {
+        display: flex;
+        width: max-content;
+    }
+
+    .chat-ss-card {
+        width: 320px;
+        margin: 0 15px;
+        flex-shrink: 0;
+    }
+
+    .chat-ss-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 25px;
+        pointer-events: none; /* Taaki image drag na ho, poora div ho */
+        box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        border: 1px solid #eee;
+    }
+
+    @media (max-width: 768px) {
+        .chat-ss-card {
+            width: 280px;
+        }
+    }
+</style>
+
+<style>
+    .review-master-section {
+        padding: 80px 0;
+        background: #ffffff;
+        overflow: hidden;
+        user-select: none;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .review-title-area {
+        text-align: center;
+        margin-bottom: 50px;
+        padding: 0 20px;
+    }
+
+    .badge-wrap {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(108, 92, 231, 0.05);
+        padding: 8px 20px;
+        border-radius: 50px;
+        border: 1px solid rgba(108, 92, 231, 0.1);
+        margin-bottom: 25px;
+    }
+
+    .badge-wrap span {
+        font-size: 13px;
+        font-weight: 700;
+        color: #6c5ce7;
+        text-transform: uppercase;
+    }
+
+    .review-title-area h2 {
+        font-size: clamp(32px, 5vw, 56px);
+        color: #111;
+        font-weight: 900;
+        line-height: 1.1;
+    }
+
+    .review-title-area h2 span {
+        background: linear-gradient(to right, #6c5ce7, #00d2ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* Slider Engine */
+    .scroll-wrapper {
+        width: 100%;
+        overflow: hidden;
+        cursor: grab;
+        padding: 20px 0;
+        touch-action: pan-y;
+    }
+
+    .scroller-logic {
+        display: flex;
+        width: max-content;
+        will-change: transform;
+    }
+
+    .chat-ss-card {
+        width: 320px;
+        margin: 0 15px;
+        flex-shrink: 0;
+        transition: transform 0.3s;
+    }
+
+    .chat-ss-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 25px;
+        display: block;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        border: 1px solid #eee;
+        pointer-events: none; /* Important for drag */
+    }
+
+    /* Zoom Overlay */
+    .zoom-overlay {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.9);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+        backdrop-filter: blur(10px);
+    }
+
+    .zoom-overlay.active { display: flex; }
+
+    .zoom-img {
+        max-width: 90%;
+        max-height: 85vh;
+        border-radius: 15px;
+        box-shadow: 0 0 30px rgba(108, 92, 231, 0.3);
+    }
+
+    .close-zoom {
+        position: absolute;
+        top: 20px; right: 20px;
+        color: white; font-size: 40px; cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+        .chat-ss-card { width: 280px; }
+    }
+</style>
+
+<section class="review-master-section">
+    <div class="review-title-area">
+        <div class="badge-wrap">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#6c5ce7"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <span>Client Reviews</span>
+        </div>
+        <h2>Trusted by Thousands<br><span>Loved for Results</span></h2>
+    </div>
+
+    <div class="scroll-wrapper" id="reviewSlider">
+        <div class="scroller-logic" id="scrollContent">
+            <div class="chat-ss-card" onclick="zoomMe(this)"><img src="WhatsApp Image 2026-04-23 at 4.32.56 PM (1).jpeg"></div>
+            <div class="chat-ss-card" onclick="zoomMe(this)"><img src="WhatsApp Image 2026-04-23 at 4.32.56 PM (2).jpeg"></div>
+            <div class="chat-ss-card" onclick="zoomMe(this)"><img src="WhatsApp Image 2026-04-23 at 4.32.56 PM.jpeg"></div>
+            <div class="chat-ss-card" onclick="zoomMe(this)"><img src="WhatsApp Image 2026-04-23 at 4.32.57 PM.jpeg"></div>
+        </div>
+    </div>
+</section>
+
+<div class="zoom-overlay" id="zoomOverlay" onclick="closeZoom()">
+    <span class="close-zoom">&times;</span>
+    <img src="" class="zoom-img" id="zoomImg">
+</div>
+
+<script>
+window.onload = function() {
+    const slider = document.getElementById('reviewSlider');
+    const track = document.getElementById('scrollContent');
+    
+    // Loop ke liye cards double karo
+    track.innerHTML += track.innerHTML;
+
+    let currentX = 0;
+    let isDragging = false;
+    let startX = 0;
+    let autoSpeed = 0.8;
+    let startTime = 0;
+    let moved = false;
+
+    // 1. Auto Scroll Engine
+    function animate() {
+        if (!isDragging) {
+            currentX -= autoSpeed;
+            if (Math.abs(currentX) >= track.offsetWidth / 2) {
+                currentX = 0;
+            }
+            track.style.transform = `translateX(${currentX}px)`;
+        }
+        requestAnimationFrame(animate);
+    }
+    animate();
+
+    // 2. Drag/Swipe Logic (PC & Mobile)
+    const handleStart = (e) => {
+        isDragging = true;
+        moved = false;
+        startX = (e.pageX || e.touches[0].pageX) - currentX;
+    };
+
+    const handleMove = (e) => {
+        if (!isDragging) return;
+        moved = true;
+        const x = (e.pageX || e.touches[0].pageX);
+        currentX = x - startX;
+        track.style.transform = `translateX(${currentX}px)`;
+    };
+
+    const handleEnd = () => {
+        isDragging = false;
+        // Loop boundary check
+        if (currentX > 0) currentX = -(track.offsetWidth / 2);
+        if (Math.abs(currentX) >= track.offsetWidth / 2) currentX = 0;
+    };
+
+    slider.addEventListener('mousedown', handleStart);
+    window.addEventListener('mousemove', handleMove);
+    window.addEventListener('mouseup', handleEnd);
+
+    slider.addEventListener('touchstart', handleStart);
+    slider.addEventListener('touchmove', handleMove);
+    slider.addEventListener('touchend', handleEnd);
+
+    // 3. Zoom Logic (Only if not dragging)
+    window.zoomMe = function(el) {
+        if (!moved) { // Agar drag nahi kiya sirf click kiya
+            const src = el.querySelector('img').src;
+            document.getElementById('zoomImg').src = src;
+            document.getElementById('zoomOverlay').classList.add('active');
+        }
+    };
+
+    window.closeZoom = function() {
+        document.getElementById('zoomOverlay').classList.remove('active');
+    };
+};
+</script>
+
+<script>
+    const slider = document.getElementById('reviewSlider');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let autoScrollSpeed = 1; // Speed adjust kar sakte ho
+
+    // Auto Scroll Logic
+    function startAutoScroll() {
+        if (!isDown) {
+            slider.scrollLeft += autoScrollSpeed;
+            if (slider.scrollLeft >= slider.scrollWidth / 2) {
+                slider.scrollLeft = 0;
+            }
+        }
+        requestAnimationFrame(startAutoScroll);
+    }
+
+    // Manual Drag Logic
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        slider.classList.add('active');
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener('mouseleave', () => { isDown = false; });
+    slider.addEventListener('mouseup', () => { isDown = false; });
+
+    slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2; // Scroll speed multiplier
+        slider.scrollLeft = scrollLeft - walk;
+    });
+
+    // Start auto scroll on load
+    startAutoScroll();
+</script>
+
+
+<style>
+    :root { --p-purple: #6c5ce7; }
+    
+    .v-master-container {
+        padding: 80px 0;
+        background: #ffffff;
+        font-family: 'Inter', sans-serif;
+        overflow: hidden;
+    }
+
+    /* --- Heading: Image Style Highlight --- */
+    .v-title-area {
+        text-align: center;
+        margin-bottom: 50px;
+        padding: 0 20px;
+    }
+
+    .v-badge {
+        display: inline-block;
+        background: #f3f0ff;
+        color: var(--p-purple);
+        padding: 10px 25px;
+        border-radius: 50px;
+        font-weight: 800;
+        font-size: 13px;
+        margin-bottom: 20px;
+        border: 1px solid #e0d7ff;
+        box-shadow: 0 4px 15px rgba(108, 92, 231, 0.1);
+    }
+
+    .v-title-area h2 {
+        font-size: clamp(30px, 5vw, 50px);
+        color: #1a1a1a;
+        font-weight: 900;
+        line-height: 1.2;
+    }
+
+    .v-title-area h2 span {
+        background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* --- Slider Engine: Super Smooth --- */
+    .v-slider-box {
+        width: 100%;
+        overflow-x: auto;
+        cursor: grab;
+        padding: 20px 0;
+        display: flex;
+        scrollbar-width: none;
+    }
+
+    .v-slider-box::-webkit-scrollbar { display: none; }
+
+    .v-track {
+        display: flex;
+        gap: 20px;
+        padding: 0 20px;
+    }
+
+    .v-card {
+        width: 280px;
+        height: 480px;
+        flex-shrink: 0;
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        background: #eee;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        border: 1px solid #ddd;
+    }
+
+    .v-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        pointer-events: none;
+    }
+
+    .v-play-overlay {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.15);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s;
+    }
+
+    .v-play-btn {
+        width: 65px; height: 65px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .v-play-btn svg { fill: var(--p-purple); width: 25px; }
+
+    /* --- THEATER MODE (Popup) --- */
+    .theater {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.95);
+        backdrop-filter: blur(15px);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+    }
+
+    .theater.active { display: flex; }
+
+    .theater-container {
+        width: 90%;
+        max-width: 420px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; /* Close button ko right mein rakhne ke liye */
+    }
+
+    .theater-container video {
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 0 50px rgba(108, 92, 231, 0.4);
+    }
+
+    /* --- FIXED CLOSE BUTTON --- */
+    .close-btn {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 28px;
+        cursor: pointer;
+        margin-bottom: 15px; /* Video se thoda upar */
+        transition: 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        line-height: 1;
+        font-family: Arial, sans-serif;
+    }
+
+    .close-btn:hover {
+        background: white;
+        color: black;
+        transform: rotate(90deg);
+    }
+
+    @media (max-width: 768px) { 
+        .v-card { width: 250px; height: 400px; } 
+        .close-btn { width: 40px; height: 40px; font-size: 24px; }
+    }
+</style>
+
+<section class="v-master-container">
+    <div class="v-title-area">
+        <div class="v-badge">CLIENT TESTIMONIALS</div>
+        <h2>Trusted by Thousands<br><span>Loved for Results</span></h2>
+    </div>
+
+    <div class="v-slider-box" id="vBox">
+        <div class="v-track" id="vTrack">
+            <div class="v-card" onclick="openVideo('nutest1.mp4')">
+                <img src="WhatsApp Image 2026-04-23 at 5.32.37 PM.jpeg" alt="Video">
+                <div class="v-play-overlay"><div class="v-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="v-card" onclick="openVideo('nutest2.mp4')">
+                <img src="WhatsApp Image 2026-04-23 at 5.32.38 PM (1).jpeg" alt="Video">
+                <div class="v-play-overlay"><div class="v-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="v-card" onclick="openVideo('nutest3.mp4')">
+                <img src="WhatsApp Image 2026-04-23 at 5.32.38 PM.jpeg" alt="Video">
+                <div class="v-play-overlay"><div class="v-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="v-card" onclick="openVideo('nutest4.mp4')">
+                <img src="WhatsApp Image 2026-04-23 at 5.32.39 PM.jpeg" alt="Video">
+                <div class="v-play-overlay"><div class="v-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="theater" id="vTheater">
+    <div class="theater-container">
+        <div class="close-btn" onclick="closeVideo()">&times;</div>
+        <video id="vPlayer" controls playsinline>
+            <source src="" type="video/mp4">
+        </video>
+    </div>
+</div>
+
+<script>
+    const box = document.getElementById('vBox');
+    const theater = document.getElementById('vTheater');
+    const player = document.getElementById('vPlayer');
+
+    let autoScroll = true;
+    function startAutoScroll() {
+        if(autoScroll) {
+            box.scrollLeft += 1;
+            if (box.scrollLeft >= box.scrollWidth - box.clientWidth) {
+                box.scrollLeft = 0;
+            }
+        }
+        requestAnimationFrame(startAutoScroll);
+    }
+    startAutoScroll();
+
+    box.addEventListener('mousedown', () => autoScroll = false);
+    box.addEventListener('touchstart', () => autoScroll = false);
+    window.addEventListener('mouseup', () => autoScroll = true);
+    window.addEventListener('touchend', () => autoScroll = true);
+
+    function openVideo(source) {
+        player.src = source;
+        theater.classList.add('active');
+        player.play();
+    }
+
+    function closeVideo() {
+        theater.classList.remove('active');
+        player.pause();
+        player.src = "";
+    }
+</script>
+
+
+<style>
+    .single-v-section {
+        padding: 60px 20px;
+        background: #ffffff;
+        text-align: center;
+        font-family: 'Inter', sans-serif;
+    }
+
+    /* Heading Style */
+    .single-v-header {
+        margin-bottom: 40px;
+    }
+
+    .single-v-header h2 {
+        font-size: clamp(28px, 5vw, 48px);
+        color: #111;
+        font-weight: 800;
+        margin: 0;
+    }
+
+    .single-v-header h2 span {
+        color: #6c5ce7;
+        background: linear-gradient(to right, #6c5ce7, #00d2ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* Video Container - Horizontal */
+    .video-frame-wrap {
+        max-width: 900px; /* Horizontal width */
+        margin: 0 auto;
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        background: #000;
+        aspect-ratio: 16 / 9; /* Perfect Horizontal Ratio */
+    }
+
+    .video-frame-wrap video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        cursor: pointer;
+    }
+
+    /* Custom Play Button Overlay (Sirf start mein dikhega) */
+    .play-overlay {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0,0,0,0.2);
+        transition: 0.3s;
+        pointer-events: none;
+    }
+
+    .play-circle {
+        width: 80px;
+        height: 80px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .play-circle svg {
+        fill: #6c5ce7;
+        width: 30px;
+        margin-left: 5px;
+    }
+
+    /* Jab video chal rahi ho toh overlay chhupa do */
+    .video-frame-wrap.playing .play-overlay {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    @media (max-width: 768px) {
+        .play-circle { width: 60px; height: 60px; }
+        .play-circle svg { width: 20px; }
+    }
+</style>
+
+<section class="single-v-section">
+    <div class="single-v-header">
+        <h2>More <span>Happy Clients</span></h2>
+    </div>
+
+    <div class="video-frame-wrap" id="vWrapper">
+        <div class="play-overlay" id="vOverlay">
+            <div class="play-circle">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+        </div>
+        
+        <video id="mainHVideo" poster="moretest.jpeg" playsinline>
+            <source src="moretest.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</section>
+
+<script>
+    const vWrapper = document.getElementById('vWrapper');
+    const myVideo = document.getElementById('mainHVideo');
+
+    vWrapper.addEventListener('click', function() {
+        if (myVideo.paused) {
+            myVideo.play();
+            myVideo.controls = true; // Click karte hi controls dikhne lagenge
+            vWrapper.classList.add('playing');
+        } else {
+            myVideo.pause();
+            vWrapper.classList.remove('playing');
+        }
+    });
+
+    // Agar user controls se pause kare toh overlay wapas aa jaye
+    myVideo.addEventListener('pause', function() {
+        vWrapper.classList.remove('playing');
+    });
+    
+    myVideo.addEventListener('play', function() {
+        vWrapper.classList.add('playing');
+    });
+</script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<style>
+    :root {
+        --p-purple: #6c5ce7;
+        --p-dark: #111;
+        --p-gray: #666;
+    }
+
+    .mega-footer {
+        background: #ffffff;
+        padding: 80px 0 40px;
+        border-top: 1px solid #eee;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .f-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+        gap: 40px;
+    }
+
+    /* Column 1: Brand & Socials */
+    .f-about h2 { font-size: 28px; font-weight: 900; margin-bottom: 20px; color: var(--p-dark); }
+    .f-about h2 span { color: var(--p-purple); }
+    .f-about p { color: var(--p-gray); line-height: 1.6; margin-bottom: 30px; font-size: 15px; }
+
+    .f-social-icons { display: flex; gap: 15px; }
+    .f-social-icons a {
+        width: 45px; height: 45px;
+        background: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 12px;
+        font-size: 20px;
+        color: #444;
+        transition: all 0.4s ease;
+        text-decoration: none;
+    }
+
+    /* Instagram Real Gradient Hover */
+    .f-social-icons a.insta:hover {
+        background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        color: white;
+        transform: translateY(-5px);
+    }
+
+    /* Facebook Real Hover */
+    .f-social-icons a.fb:hover {
+        background: #1877F2;
+        color: white;
+        transform: translateY(-5px);
+    }
+
+    /* Column 2 & 3: Links */
+    .f-links h4 { font-size: 18px; font-weight: 700; margin-bottom: 25px; color: var(--p-dark); }
+    .f-links ul { list-style: none; padding: 0; }
+    .f-links ul li { margin-bottom: 12px; }
+    .f-links ul li a { color: var(--p-gray); text-decoration: none; font-size: 15px; transition: 0.3s; }
+    .f-links ul li a:hover { color: var(--p-purple); padding-left: 8px; }
+
+    /* Column 4: Contact Buttons */
+    .f-contact h4 { font-size: 18px; font-weight: 700; margin-bottom: 25px; color: var(--p-dark); }
+    .f-btn {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 20px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        margin-bottom: 15px;
+        transition: 0.3s;
+    }
+    .f-whatsapp { background: #25D366; color: white; }
+    .f-call { background: #f3f0ff; color: var(--p-purple); }
+    .f-btn:hover { transform: scale(1.03); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+    /* Bottom Bar */
+    .f-bottom {
+        border-top: 1px solid #eee;
+        margin-top: 60px;
+        padding-top: 30px;
+        text-align: center;
+        color: #888;
+        font-size: 14px;
+    }
+
+    @media (max-width: 992px) {
+        .f-container { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+        .f-container { grid-template-columns: 1fr; text-align: center; }
+        .f-social-icons { justify-content: center; }
+        .f-btn { justify-content: center; }
+    }/* --- Logo Dedicated CSS --- */
+.f-logo {
+    display: inline-block; /* Space maintain karne ke liye */
+    margin-bottom: 25px;   /* Niche ke text se gap */
+    transition: transform 0.3s ease; /* Hover smooth karne ke liye */
+}
+
+.f-logo:hover {
+    transform: scale(1.05); /* Mouse le jane par thoda bada hoga */
+}
+
+.f-logo img {
+    height: 60px;          /* PC par logo ki height (Apne hisaab se change karein) */
+    width: auto;           /* Width apne aap adjust hogi */
+    max-width: 220px;      /* Jyada bada logo na ho jaye isliye limit */
+    object-fit: contain;   /* Image khichegi nahi, fit rahegi */
+    display: block;
+}
+
+/* Mobile Screens ke liye adjustment */
+@media (max-width: 600px) {
+    .f-logo {
+        margin: 0 auto 20px; /* Mobile par center karne ke liye */
+        display: table;      /* Center alignment fix */
+    }
+    
+    .f-logo img {
+        height: 50px;      /* Mobile par thoda chhota logo */
+    }
+}
+</style>
+
+<footer class="mega-footer">
+    <div class="f-container">
+        <div class="f-about">
+          <a href="#" class="f-logo">
+                <img src="nnumerology logo.jpeg" alt="Company Logo">
+            </a>
+            <p>We are dedicated to providing the best results for our clients. Join thousands of happy users today and scale your business.</p>
+            <div class="f-social-icons">
+                <a href="https://facebook.com" class="fb" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com" class="insta" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <div class="f-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#course-section">Our Course</a></li>
+                <li><a href="#">Success Stories</a></li>
+                <li><a href="#founder-intro">About Us</a></li>
+            </ul>
+        </div>
+
+        <div class="f-links">
+            <h4>Services</h4>
+            <ul>
+                <li><a href="#">Numerology</a></li>
+                <li><a href="#">Graphology</a></li>
+                <li><a href="#">Astrology</a></li>
+                <li><a href="#">Career Advice</a></li>
+            </ul>
+        </div>
+
+        <div class="f-contact">
+            <h4>Let's Talk</h4>
+            <a href="https://wa.me/919876543210" class="f-btn f-whatsapp">
+                <i class="fab fa-whatsapp"></i> WhatsApp Chat
+            </a>
+            <a href="tel:+919876543210" class="f-btn f-call">
+                <i class="fas fa-phone-alt"></i> Call Us Now
+            </a>
+        </div>
+    </div>
+
+    <div class="f-bottom">
+        <p>&copy; 2026 NNUMERO MAGIC.</p>
+    </div>
+</footer>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80 },
+                "color": { "value": "#6c5ce7" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5 },
+                "size": { "value": 3 },
+                "line_linked": { "enable": true, "distance": 150, "color": "#6c5ce7", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 2 }
+            }
+        });
+
+        window.onscroll = function() {
+            const nav = document.getElementById('navbar');
+            if (window.pageYOffset > 50) {
+                nav.style.background = "rgba(255, 255, 255, 0.95)";
+                nav.style.padding = "10px 8%";
+            } else {
+                nav.style.background = "rgba(255, 255, 255, 0.1)";
+                nav.style.padding = "20px 8%";
+            }
+        };
+    </script>
+</body>
+</html>
