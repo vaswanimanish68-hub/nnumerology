@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AstroVision | Premium Astrology Guidance</title>
+    <title>Nnumeromagic | Premium Astrology Guidance</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -495,14 +495,73 @@
         width: 100%;
         text-align: center;
     }
+}.hero-text h1 {
+    /* Isse light background par dark dikhega, aur dark par light */
+    color: currentColor; 
+    filter: brightness(1.2);
+    mix-blend-mode: difference; 
+}/* Sticky Bar - Sabse upar rahega */
+.top-webinar-bar {
+    background: #0b0b1a;
+    color: white;
+    padding: 12px 5%;
+    width: 100%;
+    z-index: 10001;
+    position: fixed; /* Isko fixed hi rakhte hain */
+    top: 0;
+    left: 0;
+    height: 50px; /* Fix height taaki niche ka alignment sahi rahe */
+    display: flex;
+    align-items: center;
+}
+
+/* Navbar - Ise Sticky Bar ke theek niche dhaklenge */
+#navbar {
+    position: fixed;
+    top: 50px; /* Sticky bar ki height ke barabar gap */
+    width: 100%;
+    z-index: 10000;
+    transition: all 0.3s ease;
+}
+
+/* Jab scroll karein to Navbar ko chupa dein aur Bar ko wahi rakhein */
+.nav-hidden {
+    top: -100px !important;
+}
+
+.bar-container { width: 100%; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.live-pulse { width: 8px; height: 8px; background: #ff4757; border-radius: 50%; animation: pulse 2s infinite; }
+.bar-action-btn { background: #FFD700; color: #000; padding: 5px 15px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 12px; }
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 71, 87, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); }
+}
+
+@media (max-width: 768px) {
+    .bar-time { display: none; }
+    .bar-text { font-size: 11px; }
 }
     </style>
 </head>
 <body>
-
+<div class="top-webinar-bar" id="webinarBar">
+    <div class="bar-container">
+        <div class="bar-left">
+            <span class="live-pulse"></span>
+            <span class="bar-text">FREE WEBINAR: <b>Parenting through Handwriting</b></span>
+        </div>
+        <div class="bar-right">
+            <span class="bar-time"><i class="far fa-clock"></i> 3 May, 7:30 PM</span>
+            <a href="https://us06web.zoom.us/j/81950167836" class="bar-action-btn">Join Now</a>
+        </div>
+    </div>
+</div>
     <div id="particles-js"></div>
 
     <header id="navbar">
+        
         <div class="logo">NNUMERO MAGIC</div>
         
         <div class="menu-toggle" id="mobile-menu">
@@ -522,7 +581,7 @@
 
     <section class="hero">
         <div class="hero-text">
-            <h1>Unlock Your <br>Destiny with <br><span>Astrology</span></h1>
+            <h1>Modern Healing  <br>For <br><span>Ancient Souls</span></h1>
             <p>Experience personalized Vedic insights to bring balance, success, and peace back into your life.</p>
             <div class="btn-group">
                 <a href="#" class="btn btn-primary">Get Consultation</a>
@@ -940,8 +999,8 @@
                 <div class="info-card">
                     <h5><i class="fas fa-chalkboard-teacher"></i> Expert Mentors</h5>
                     <li>🔹 Amit R. Chokhani</li>
-                    <li>🔹 Preiti Sabharwal</li>
-                    <li>🔹 Charuhansii Yadav | Ankitha Shashi</li>
+                    <li>🔹  Prieti A Sabharwal</li>
+                    <li>🔹 Charuhansi Yadaav | Ankitha Shashi</li>
                 </div>
 
                 <div class="info-card">
@@ -963,6 +1022,7 @@
                     <span class="tag">Reiki Healing</span>
                     <span class="tag">Handwriting Improvement</span>
                     <span class="tag">Name Pronology</span>
+                      <span class="tag">Tarot Reading</span>
                 </div>
             </div>
 
@@ -974,6 +1034,415 @@
 
     </div>
 </section>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    :root {
+        --primary-gold: #FFD700;
+        --soft-purple: #6c5ce7;
+        --deep-blue: #0984e3;
+        --glass-bg: rgba(255, 255, 255, 0.1);
+    }
+
+    .webinar-spotlight {
+        width: 100%;
+        padding: 80px 5%;
+        background: #0b0b1a; /* Dark Premium Theme */
+        display: flex;
+        justify-content: center;
+    }
+
+    .webinar-card {
+        max-width: 1200px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1.2fr; /* Image left, Details right */
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        border-radius: 30px;
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        overflow: hidden;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 20px rgba(108, 92, 231, 0.2);
+        transition: transform 0.4s ease;
+    }
+
+    .webinar-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 35px 60px rgba(0,0,0,0.6), 0 0 30px rgba(255, 215, 0, 0.2);
+    }
+
+    /* Left Side - Image Only */
+    .image-container {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* Floating animation for the image */
+        /* animation: imgFloat 6s ease-in-out infinite; */
+    }
+
+    .seats-badge {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        background: #e74c3c;
+        color: #fff;
+        padding: 8px 18px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 14px;
+        z-index: 10;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    /* Right Side - All Details Together */
+    .details-container {
+        padding: 60px;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .live-tag {
+        color: var(--primary-gold);
+        font-weight: 700;
+        letter-spacing: 2px;
+        font-size: 13px;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .webinar-title {
+        font-size: 38px;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        font-weight: 700;
+        background: linear-gradient(to right, #fff, #ddd);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .parent-greeting {
+        font-size: 19px;
+        color: var(--primary-gold);
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+
+    .main-content {
+        font-size: 17px;
+        line-height: 1.7;
+        margin-bottom: 30px;
+        opacity: 0.9;
+    }
+
+    .main-content b {
+        color: var(--primary-gold);
+        font-size: 20px;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .info-grid {
+        background: rgba(255,255,255,0.05);
+        padding: 25px;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        border: 1px dashed rgba(255, 215, 0, 0.5);
+    }
+
+    .schedule {
+        display: flex;
+        gap: 25px;
+        margin-bottom: 15px;
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+    .schedule i { color: var(--primary-gold); }
+
+    .zoom-credentials {
+        font-size: 15px;
+        color: #ccc;
+        background: rgba(0,0,0,0.2);
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .price-tag {
+        margin-bottom: 30px;
+        font-size: 24px;
+        font-weight: 700;
+    }
+    .old-price { text-decoration: line-through; opacity: 0.5; font-size: 18px; margin-right: 10px; }
+    .new-price { color: var(--primary-gold); }
+
+    /* Buttons */
+    .btn-group {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .btn-reserve {
+        position: relative;
+        background: linear-gradient(135deg, var(--soft-purple), var(--deep-blue));
+        color: white;
+        padding: 18px 35px;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 700;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: 0.3s;
+        box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
+    }
+
+    /* Shine effect */
+    .btn-reserve::after {
+        content: '';
+        position: absolute;
+        top: -50%; left: -100%;
+        width: 100%; height: 200%;
+        background: rgba(255,255,255,0.2);
+        transform: rotate(45deg);
+        animation: shine 3s infinite;
+    }
+
+    .btn-whatsapp {
+        background: #25D366;
+        color: white;
+        padding: 18px 30px;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: 0.3s;
+    }
+
+    .footer-brand {
+        margin-top: 25px;
+        font-weight: 700;
+        color: var(--primary-gold);
+        letter-spacing: 1px;
+    }
+
+    /* Animations */
+    @keyframes shine { 0% { left: -100%; } 20% { left: 100%; } 100% { left: 100%; } }
+    @keyframes imgFloat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+        .webinar-card { grid-template-columns: 1fr; }
+        .image-container { height: 350px; }
+        .details-container { padding: 40px 30px; text-align: center; }
+        .schedule { justify-content: center; }
+        .btn-group { justify-content: center; }
+    }/* --- Sirf Image Container ka Fixed Code --- */
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000; /* Sidebar background agar image choti ho to */
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Desktop par full dikhega */
+    display: block;
+}
+
+/* Mobile View Fix (Yaha changes kiye hain) */
+@media (max-width: 992px) {
+    .image-container {
+        height: auto; /* Height auto takki image ke hisab se adjust ho */
+        min-height: 250px;
+        background: #0b0b1a; /* Card ke background se match */
+    }
+
+    .image-container img {
+        object-fit: contain; /* Isse image side se kabhi nahi kategi */
+        width: 100%;
+        height: auto;
+        max-height: 450px; /* Taki mobile screen se badi na ho jaye */
+    }
+}/* --- MOBILE VIEW (ABSOLUTE FULL COVER - NO CROP, NO STRETCH) --- */
+@media (max-width: 992px) {
+    /* Bahar ki saari khali jagah khatam */
+    .webinar-spotlight {
+        padding: 0px !important;
+    }
+
+    .webinar-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0px !important;
+        border: none !important;
+        border-radius: 0px !important; /* Side se chipkaane ke liye */
+        display: block !important; /* Stack image on top */
+    }
+
+    .image-container {
+        width: 100% !important;
+        height: auto !important;
+        padding: 0px !important;
+        margin: 0px !important;
+        line-height: 0; /* Extra bottom space hatane ke liye */
+    }
+
+    .image-container img {
+        width: 100% !important;
+        height: auto !important; /* Original lambai maintain hogi */
+        object-fit: initial !important; /* No stretch, No crop */
+        display: block !important;
+        border-radius: 0px !important; /* Full width look */
+    }
+
+    .details-container {
+        padding: 30px 20px !important;
+        text-align: center !important;
+    }
+}/* --- MOBILE VIEW (Full Width + Original Length + No Stretch) --- */
+@media (max-width: 992px) {
+    .webinar-spotlight {
+        padding: 0px !important; /* Screen ke corners touch karne ke liye */
+    }
+
+    .webinar-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0px !important;
+        border: none !important;
+        border-radius: 0px !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .image-container {
+        width: 100% !important;
+        height: auto !important; /* Height fix nahi hai, image ke sath badhegi */
+        display: block !important;
+        overflow: visible !important;
+    }
+
+    .image-container img {
+        width: 100% !important;
+        height: auto !important; /* Isse image lambi dikhegi bina stretch huye */
+        object-fit: contain !important; /* Jaisi photo hai bilkul waisi original */
+        display: block !important;
+        border-radius: 0px !important;
+    }
+
+    .details-container {
+        padding: 40px 20px !important;
+        text-align: center !important;
+    }
+}/* --- MOBILE VIEW (Big Box + Full Image Cover) --- */
+@media (max-width: 992px) {
+    .webinar-spotlight {
+        padding: 0px !important; /* Screen ke kinaro tak chipakne ke liye */
+    }
+
+    .webinar-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0px !important;
+        border-radius: 0px !important;
+        display: flex !important;
+        flex-direction: column !important; /* Image upar, content niche */
+    }
+
+    /* IMAGE KA BOX BADA KIYA HAI YAHAN */
+    .image-container {
+        width: 100% !important;
+        /* Image ki lambai ke hisab se box ko bada kiya */
+        height: auto !important; 
+        min-height: 450px; /* Kam se kam itna bada box rahega hi */
+        display: block !important;
+        line-height: 0;
+    }
+
+    .image-container img {
+        width: 100% !important;
+        height: auto !important; /* Original lambai bina stretch huye */
+        display: block !important;
+        object-fit: cover; /* Box bada hai toh image puri cover karegi */
+        object-position: top; /* Taki face upar se dikhe */
+        border-radius: 0px !important;
+    }
+
+    .details-container {
+        padding: 40px 20px !important;
+        background: #0b0b1a; /* Neeche ka content clear dikhne ke liye */
+    }
+}
+</style>
+
+<section class="webinar-spotlight">
+    <div class="webinar-card">
+        
+        <div class="image-container">
+            <div class="seats-badge">Only 50 Seats Left</div>
+            <img src="WhatsApp Image 2026-05-03 at 12.35.57 PM.jpeg" alt="Handwriting Webinar">
+        </div>
+
+        <div class="details-container">
+            <span class="live-tag"><i class="fas fa-circle" style="font-size: 8px; vertical-align: middle;"></i> LIVE WEBINAR</span>
+            <h2 class="webinar-title">Better Parenting through Handwriting</h2>
+            
+            <p class="parent-greeting">Dear Parents 🌸</p>
+
+            <div class="main-content">
+                <b>Handwriting is BRAIN writing</b>
+                Aapka child jo likhta hai, wahi uski thinking aur future ko shape karta hai.<br><br>
+                Good news 👉 Writing change karke hum thinking bhi improve kar sakte hain.
+            </div>
+
+            <div class="info-grid">
+                <div class="schedule">
+                    <span><i class="fas fa-calendar-day"></i> 3 May 2026</span>
+                    <span><i class="fas fa-clock"></i> 7:30 PM</span>
+                    <span><i class="fas fa-video"></i> Zoom</span>
+                </div>
+                <div class="zoom-credentials">
+                    <b>Meeting ID:</b> 81950167836 &nbsp; | &nbsp; <b>Password:</b> learn123
+                </div>
+            </div>
+
+            <p style="margin-bottom: 25px; font-weight: 600;">👉 Join karein aur child ki life ki direction badlein</p>
+
+            <div class="price-tag">
+                <span class="old-price">₹1999</span>
+                <span class="new-price">FREE</span>
+            </div>
+
+            <div class="btn-group">
+                <a href="https://us06web.zoom.us/j/81950167836?pwd=uHsIp6rhWiDYem4uWXgssiq6oGzagq.1" class="btn-reserve">Reserve Your Seat</a>
+                <a href="https://wa.me/yournumber" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Join on WhatsApp
+                </a>
+            </div>
+
+            <div class="footer-brand">Nnumero Magic</div>
+        </div>
+    </div>
+</section>
+
+
 <style>
     /* --- Team Section Styling --- */
     .team-section {
@@ -1131,115 +1600,82 @@
     }
 </style>
 
-<section class="team-section">
-    <div class="section-header">
-        <h2>Meet Our Team</h2>
-        <p>Guiding You with Wisdom, Experience & Pure Intentions</p>
-    </div>
-
-    <div class="founder-highlight">
-        <div class="founder-card">
-            <img src="Screenshot 2026-04-23 214517.png" alt="Amit R Chokhani" class="member-img">
-            <div class="member-info">
-                <span class="role">Astro-Numerologist/Graphologist/Signature Expert</span>
-                <h3>AMIT R CHOKHANI</h3>
-                <p class="desc">A visionary guide with 10+ years of experience helping thousands align their lives with the energy of numbers. Blends the power of astrology, numerology, and graphology to uncover hidden life patterns and energies.
-Expert in signature analysis, providing practical insights to enhance personality, success, and personal growth.
-</p>
-                <div class="social-links">
-                    <!-- <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a> -->
-                </div>
-            </div>
+<section class="team-section" style="padding: 40px 0; font-family: sans-serif; background: transparent;">
+    
+    <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-size: 2.2rem; margin-bottom: 10px;">Meet Our Team</h2>
+        <p style="margin: 0; opacity: 0.8; font-size: 1.1rem;">Guiding You with Wisdom, Experience & Pure Intentions</p>
+        <div style="margin-top: 15px;">
+            <span style="font-weight: bold; text-transform: uppercase; letter-spacing: 2px; color: #c5a680; font-size: 0.9rem; border-bottom: 2px solid #c5a680; padding-bottom: 5px;">Co-Members</span>
         </div>
     </div>
-       <div class="member-card">
-            <img src="Screenshot 2026-04-23 214151.png" alt="Team Member" class="member-img">
+
+    <div class="founder-highlight" style="max-width: 850px; margin: 0 auto 50px auto; padding: 0 20px;">
+        <div class="founder-card" style="text-align: center; background: transparent; border: 1px solid rgba(0,0,0,0.1); border-radius: 20px; padding: 30px;">
+            <img src="Screenshot 2026-04-23 214517.png" alt="Amit R Chokhani" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
             <div class="member-info">
-                <span class="role">Reiki Healer/Tarot</span>
-                <h3>ANKITHA SHASHI</h3>
-                <p class="desc">Certified Reiki Healer with expertise in energy balancing and holistic healing practices.
-Skilled Tarot Reader providing intuitive guidance and clarity for life’s decisions.
-</p>
-                <div class="social-links">
-                    <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
-                </div>
+                <span class="role" style="display: block; color: #6e57e0; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px;">Astro-Numerologist / Graphologist / Signature Expert</span>
+                <h3 style="margin: 0 0 15px 0; font-size: 1.6rem; letter-spacing: 1px;">AMIT R CHOKHANI</h3>
+                <p class="desc" style="font-size: 1rem; line-height: 1.7; opacity: 0.9; max-width: 600px; margin: 0 auto;">"Align your financial energy with the precision of a Life Coach. With 10+ years of experience in Astro-Numerology, this journey helps you uncover hidden patterns blocking your success. Learn to manifest wealth by blending sacred Reiki symbols with the power of numbers and purposeful clarity."</p>
             </div>
         </div>
-                <div class="member-card">
-            <img src="Screenshot 2026-04-23 214427.png" alt="Team Member" class="member-img">
+    </div>
+
+    <div class="team-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        
+        <div class="member-card" style="flex: 1 1 300px; max-width: 360px; text-align: center; background: transparent; border: 1px solid rgba(0,0,0,0.08); padding: 25px; border-radius: 15px;">
+            <img src="Screenshot 2026-04-23 214151.png" alt="Ankitha Shashi" style="width: 130px; height: 130px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
             <div class="member-info">
-                <span class="role">Numerologist
-                    /Graphologist/Signature Expert/Tarot/Reiki
-                </span>
-                <h3>PRIETI SABHARWAL</h3>
-                <p class="desc">Combines multiple healing sciences to offer holistic guidance for life, relationships, and career.
-Balances energy, predicts outcomes, and provides spiritual healing for overall well-being.</p>
-                <div class="social-links">
-                    <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
-                </div>
-            </div>
-        </div>
-    <div class="team-grid">
-        <div class="member-card">
-            <img src="Screenshot 2026-04-23 214840.png" alt="Team Member" class="member-img">
-            <div class="member-info">
-                <span class="role">Celebrity-Numerologist/Name Designing Expert/Vastu-Consulant</span>
-                <h3>CHARUHANSI MA'AM</h3>
-                <p class="desc">Renowned celebrity numerologist specializing in impactful name designing for success and recognition.
-Provides expert Vastu consultations to align spaces with positive energy, growth, and harmony.
-</p>
-                <div class="social-links">
-                    <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
-                </div>
-            </div>
-        </div>
-        <div class="member-card">
-            <img src="Screenshot 2026-04-23 215015.png" alt="Team Member" class="member-img">
-            <div class="member-info">
-                <span class="role">Remedy Expert</span>
-                <h3>NISHA HARIYANI</h3>
-                <p class="desc">Specializes in providing effective astrological and spiritual remedies to overcome life challenges.
-Offers personalized solutions to restore balance, positivity, and long-term success.
-</p>
-                <div class="social-links">
-                    <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
-                </div>
-            </div>
-        </div>
-        <div class="member-card">
-            <img src="Screenshot 2026-04-23 215137.png" alt="Team Member" class="member-img">
-            <div class="member-info">
-                <span class="role">Handwriting Expert</span>
-                <h3>NEHA AGARWAL</h3>
-                <p class="desc">Analyzes handwriting patterns to reveal personality traits, mindset, and emotional tendencies.
-Provides practical insights to improve behavior, confidence, and overall personal growth.
-</p>
-                <div class="social-links">
-                    <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
-                </div>
+                <span class="role" style="display: block; color: #6e57e0; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Reiki Grandmaster / Tarot / Numerologist</span>
+                <h3 style="margin: 12px 0; font-size: 1.3rem;">ANKITHA SHASHI</h3>
+                <p style="font-size: 0.95rem; opacity: 0.8; line-height: 1.5;">Certified Reiki Grandmaster with expertise in energy balancing and holistic healing practices. Skilled Tarot Reader providing intuitive guidance and clarity for life’s decision</p>
             </div>
         </div>
 
-        <div class="member-card">
-            <img src="Mamta CHHAWCHHARIA.jpeg" alt="Team Member" class="member-img">
+        <div class="member-card" style="flex: 1 1 300px; max-width: 360px; text-align: center; background: transparent; border: 1px solid rgba(0,0,0,0.08); padding: 25px; border-radius: 15px;">
+            <img src="Screenshot 2026-04-23 214427.png" alt="Prieti A Sabharwal" style="width: 130px; height: 130px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
             <div class="member-info">
-                <span class="role">Watch Analysis</span>
-                <h3>MAMTA CHHAWCHHARIA</h3>
-                <p class="desc">Analyzes watch-wearing patterns and time-related habits to reveal personality traits and lifestyle tendencies.
-Provides unique insights to help improve time management, decision-making, and personal balance.
-</p>
-                <div class="social-links">
-                    <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
-                </div>
+                <span class="role" style="display: block; color: #6e57e0; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Numerologist / Graphologist / Tarot</span>
+                <h3 style="margin: 12px 0; font-size: 1.3rem;">PRIETI A SABHARWAL</h3>
+                <p style="font-size: 0.95rem; opacity: 0.8; line-height: 1.5;">Combines multiple healing sciences to offer holistic guidance for life, relationships, and career. Balances energy, predicts outcomes, and provides spiritual healing for overall well-being.</p>
             </div>
         </div>
 
+        <div class="member-card" style="flex: 1 1 300px; max-width: 360px; text-align: center; background: transparent; border: 1px solid rgba(0,0,0,0.08); padding: 25px; border-radius: 15px;">
+            <img src="Screenshot 2026-04-23 214840.png" alt="Charuhansi Yadav" style="width: 130px; height: 130px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+            <div class="member-info">
+                <span class="role" style="display: block; color: #6e57e0; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Numerologist, Vastu Consultant,
+Personal & Business Name
+Designer & analyst</span>
+                <h3 style="margin: 12px 0; font-size: 1.3rem;">CHARUHANSI YADAAV</h3>
+                <p style="font-size: 0.95rem; opacity: 0.8; line-height: 1.5;">Renowned numerologist specializing in impactful name designing for success and recognition. Provides expert Vastu consultations to align spaces with positive energy, growth, and harmony.</p>
+            </div>
+        </div>
+    </div>
 
+    <!-- <div style="text-align: center; margin-top: 60px; padding: 0 20px;">
+        <hr style="border: 0; border-top: 1px solid #c5a680; margin: 0 auto 40px auto; opacity: 0.3; width: 60%;">
+        
+        <h4 style="text-transform: uppercase; letter-spacing: 4px; color: #c5a680; margin-bottom: 35px; font-size: 1.1rem; font-weight: bold;">Extended Team Members</h4>
+        
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; max-width: 1000px; margin: 0 auto;">
+            
+            <div style="flex: 1 1 220px;">
+                <h5 style="margin: 0; font-size: 1.1rem; font-weight: bold; letter-spacing: 1px;">NISHA HARIYANI</h5>
+                <span style="font-size: 0.85rem; color: #6e57e0; font-weight: 600; display: block; margin-top: 6px; text-transform: uppercase;">Remedy Expert</span>
+            </div>
+            
+            <div style="flex: 1 1 220px;">
+                <h5 style="margin: 0; font-size: 1.1rem; font-weight: bold; letter-spacing: 1px;">NEHA AGARWAL</h5>
+                <span style="font-size: 0.85rem; color: #6e57e0; font-weight: 600; display: block; margin-top: 6px; text-transform: uppercase;">Handwriting Expert</span>
+            </div>
+            
+            <div style="flex: 1 1 220px;">
+                <h5 style="margin: 0; font-size: 1.1rem; font-weight: bold; letter-spacing: 1px;">MAMTA CHHAWCHHARIA</h5>
+                <span style="font-size: 0.85rem; color: #6e57e0; font-weight: 600; display: block; margin-top: 6px; text-transform: uppercase;">Watch Analysis</span>
+            </div> -->
 
-
-
- 
+        </div>
     </div>
 </section>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
@@ -1624,11 +2060,11 @@ Provides unique insights to help improve time management, decision-making, and p
 
         <div class="course-card">
             <div class="course-left">
-                <h3>Name Numerology</h3>
-                <p>Learn how names impact success, energy, and life direction.</p>
+                <h3>Name Pronology</h3>
+                <p>Learn how name energy with Pronology can change the life .</p>
                 <span class="price">₹16,000</span>
             </div>
-            <a href="https://wa.me/919822568660?text=Hello,%20I%20want%20to%20buy%20Name%20Numerology%20Course" class="buy-btn">Buy Now</a>
+            <a href="https://wa.me/919822568660?text=Hello,%20I%20want%20to%20buy%20Name%20Pronology%20Course" class="buy-btn">Buy Now</a>
         </div>
 
         <div class="course-card">
@@ -1666,6 +2102,17 @@ Provides unique insights to help improve time management, decision-making, and p
             </div>
             <a href="https://wa.me/919822568660?text=Hello,%20I%20want%20to%20buy%20Reiki%20Course" class="buy-btn">Buy Now</a>
         </div>
+
+
+  <div class="course-card">
+            <div class="course-left">
+                <h3>Tarot Reading</h3>
+                <p>Learn to interpret Tarot cards for guidance and insight.</p>
+                <span class="price">₹2,100</span>
+            </div>
+            <a href="https://wa.me/919822568660?text=Hello,%20I%20want%20to%20buy%20Tarot%20Reading%20Course" class="buy-btn">Buy Now</a>
+        </div>
+
 
     </div>
 </section>
@@ -2660,8 +3107,11 @@ window.onload = function() {
             </a>
             <p>We are dedicated to providing the best results for our clients. Join thousands of happy users today and scale your business.</p>
             <div class="f-social-icons">
-                <a href="https://facebook.com" class="fb" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://instagram.com" class="insta" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/NumroMmagiic?mibextid=ZbWKwL" class="fb" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/nnumero_magic?igsh=MXFuMHU2cmozazd0MA==" class="insta" target="_blank"><i class="fab fa-instagram"></i></a>
+   <a href="https://youtube.com/@nnumeromagic5?si=vRZREtnVHDFUuBKk" class="yt" target="_blank">
+    <i class="fab fa-youtube"></i>
+</a>       
             </div>
         </div>
 
@@ -2737,7 +3187,18 @@ window.onload = function() {
                 nav.style.background = "rgba(255, 255, 255, 0.1)";
                 nav.style.padding = "20px 8%";
             }
-        };
+        };window.onscroll = function() {
+    const nav = document.getElementById('navbar');
+    
+    // Agar page 50px se zyada scroll ho jaye
+    if (window.pageYOffset > 50) {
+        // Navbar ko upar chupa do
+        nav.classList.add('nav-hidden');
+    } else {
+        // Wapas normal position (Sticky bar ke niche)
+        nav.classList.remove('nav-hidden');
+    }
+};
     </script>
 </body>
 </html>
